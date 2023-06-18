@@ -1,0 +1,20 @@
+.example-spacer {
+    flex: 0.5 0.5 auto;
+}
+.contenu-page {
+    min-height: calc(100vh - 8vh);
+    background-color: #F0F1F4;
+}
+.custom-menu {
+    background-color:white;
+}
+mat-sidenav {
+    width: 250px;
+    flex : 1;
+}
+.custom-toolbar {
+    height: 8vh;
+}
+.active-link {
+    background: rgba(105, 108, 255, .15);
+}
