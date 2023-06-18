@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-matiere.component.scss']
 })
 export class CreateMatiereComponent {
-
+  nom : string = '';
+  nomProf : string = '';
+  photoProf : string = '../assets/img/avatars/1.png';
+  photo : string = '../assets/img/avatars/2.png';
 }

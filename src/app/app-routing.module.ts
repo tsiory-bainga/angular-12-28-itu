@@ -8,19 +8,38 @@ import { MatiereListComponent } from './pages/matiere-list/matiere-list.componen
 import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { EditAssignmentComponent } from './components/edit-assignment/edit-assignment.component';
 import { EditMatiereComponent } from './components/edit-matiere/edit-matiere.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { FormContainerComponent } from './pages/form-container/form-container.component';
 
 const routes: Routes = [
   {
     path : 'login',
-    component : LoginPageComponent
+    component : LoginPageComponent,
+    children: [
+      { path: '', component: LoginFormComponent },
+      { path: 'register', component: CreateUserComponent }
+    ]
   },
   {
     path: 'assignments',
     component: ToolbarSidebarComponent, // Set menu-sidebar as the layout component
     children: [
       { path: '', component: AssignmentListComponent },
-      { path: 'add', component: CreateAssignmentComponent },
-      { path: ':id/edit', component: EditAssignmentComponent }
+      { 
+        path: 'add', 
+        component: FormContainerComponent,
+        children : [
+          { path: '', component: CreateAssignmentComponent }
+        ]
+      },
+      { 
+        path: ':id/edit', 
+        component: FormContainerComponent,
+        children : [
+          { path: '', component: EditAssignmentComponent }
+        ]
+      }
     ]
   },
   {
@@ -28,11 +47,22 @@ const routes: Routes = [
     component: ToolbarSidebarComponent, // Set menu-sidebar as the layout component
     children: [
       { path: '', component: MatiereListComponent },
-      { path: 'add', component: CreateMatiereComponent },
-      { path: ':id/edit', component: EditMatiereComponent }
+      { 
+        path: 'add', 
+        component: FormContainerComponent,
+        children : [
+          { path: '', component: CreateMatiereComponent }
+        ]
+      },
+      { 
+        path: ':id/edit', 
+        component: FormContainerComponent,
+        children : [
+          { path: '', component: EditMatiereComponent }
+        ]
+      }
     ]
   }
-
 ];
 
 @NgModule({

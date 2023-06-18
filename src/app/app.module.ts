@@ -6,11 +6,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,9 @@ import { AssignmentListComponent } from './pages/assignment-list/assignment-list
 import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { EditMatiereComponent } from './components/edit-matiere/edit-matiere.component';
 import { MatiereListComponent } from './pages/matiere-list/matiere-list.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { ChampPhotoComponent } from './components/champ-photo/champ-photo.component';
+import { FormContainerComponent } from './pages/form-container/form-container.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,10 @@ import { MatiereListComponent } from './pages/matiere-list/matiere-list.componen
     AssignmentListComponent,
     CreateMatiereComponent,
     EditMatiereComponent,
-    MatiereListComponent
+    MatiereListComponent,
+    CreateUserComponent,
+    ChampPhotoComponent,
+    FormContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +63,12 @@ import { MatiereListComponent } from './pages/matiere-list/matiere-list.componen
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

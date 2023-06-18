@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-assignment.component.scss']
 })
 export class CreateAssignmentComponent {
-
+  photoAuteur : string = '../assets/img/avatars/1.png';
+  nomAuteur : string = '';
+  titre : string = '';
+  matiere : string = '';
+  dateRendu! : Date;
 }

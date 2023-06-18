@@ -1,0 +1,37 @@
+<form ngForm #loginForm class="mb-3">
+    <div class="mb-2">
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <input matInput type="text" name="username" class="form-control" [(ngModel)]="username" placeholder="Entrez votre nom d'utilisateur" />
+    </div>
+    <div class="mb-2">
+        <label for="password" class="form-label">Mot de Passe</label>
+        <input matInput type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Mot de Passe" />
+    </div>
+    <div class="mb-2">
+        <label for="password" class="form-label">Confirmer le mot de passe</label>
+        <input matInput type="password" name="password" class="form-control" [(ngModel)]="repassword" placeholder="Répétez le mot de passe" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Administrateur</label>
+        <select name="admin" class="form-select" [(ngModel)]="admin">
+            <option value="true">
+                Oui
+            </option>
+            <option value="false">
+                Non
+            </option>
+        </select>
+    </div>
+    <div class="mb-2">
+        <div class="form-check"></div>
+    </div>
+    <div class="mb-2">
+        <button class="btn btn-primary d-grid w-100" type="submit">S'Inscrire</button>
+    </div>
+</form>
+<p class="text-center">
+    <span>Vous avez un compte ? </span>
+    <a routerLink="/login">
+        <span>Connectez-vous</span>
+    </a>
+</p>
