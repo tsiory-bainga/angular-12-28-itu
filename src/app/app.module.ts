@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -12,7 +12,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +35,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { ChampPhotoComponent } from './components/champ-photo/champ-photo.component';
 import { FormContainerComponent } from './pages/form-container/form-container.component';
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,10 +68,12 @@ import { FormContainerComponent } from './pages/form-container/form-container.co
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    {provide: LOCALE_ID, useValue: 'fr' }
   ],
   bootstrap: [AppComponent]
 })

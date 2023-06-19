@@ -6,14 +6,27 @@
     background-color: #F0F1F4;
 }
 .custom-menu {
-    background-color:white;
+    background-color:white;   
+}
+.late-start{
+    top : 8vh;
 }
 mat-sidenav {
     width: 250px;
     flex : 1;
+    position: fixed;
+    top: 8vh;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
 }
 .custom-toolbar {
     height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
 }
 .active-link {
     background: rgba(105, 108, 255, .15);

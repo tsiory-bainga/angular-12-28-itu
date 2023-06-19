@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'assignments',
-    component: ToolbarSidebarComponent, // Set menu-sidebar as the layout component
+    component: ToolbarSidebarComponent,
     children: [
       { path: '', component: AssignmentListComponent },
       { 
@@ -44,7 +44,7 @@ const routes: Routes = [
   },
   {
     path: 'matieres',
-    component: ToolbarSidebarComponent, // Set menu-sidebar as the layout component
+    component: ToolbarSidebarComponent,
     children: [
       { path: '', component: MatiereListComponent },
       { 

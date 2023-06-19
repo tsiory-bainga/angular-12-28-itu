@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Assignment } from 'src/app/models/Assignement-model';
 
 @Component({
   selector: 'app-assignment-list-item',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./assignment-list-item.component.scss']
 })
 export class AssignmentListItemComponent {
-
+  @Input() assignment! : Assignment;
 }

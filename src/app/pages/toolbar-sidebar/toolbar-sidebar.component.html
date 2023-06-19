@@ -5,8 +5,8 @@
     <span class="example-spacer"></span>
     <app-logo-display></app-logo-display>
 </mat-toolbar>
-<mat-sidenav-container>
-    <mat-sidenav class="custom-menu" #sidenav mode="side" opened="true">
+<mat-sidenav-container class="late-start">
+    <mat-sidenav #sidenav class="custom-menu" mode="side" opened="true">
         <mat-nav-list>
             <h3 matSubheader>Assignments</h3>
             <a mat-list-item routerLink="/assignments" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class='bx bx-list-ol'></i>  Liste des Assignments</a>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Matiere } from 'src/app/models/Matiere-model';
+import { AssignmentService } from 'src/app/shared/Assignment-service';
+import { MatiereService } from 'src/app/shared/Matiere-service';
 
 @Component({
   selector: 'app-create-assignment',
@@ -11,4 +14,14 @@ export class CreateAssignmentComponent {
   titre : string = '';
   matiere : string = '';
   dateRendu! : Date;
+
+  listeMatieres : Matiere[] = [];
+
+  constructor(private assignmentService : AssignmentService, private matiereService : MatiereService) { }
+  ngOnInit() : void {
+    this.getMatieres();
+  }
+  getMatieres() {
+    this.listeMatieres = this.matiereService.getMatieres();
+  }
 }
