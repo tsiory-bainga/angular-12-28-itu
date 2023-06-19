@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -34,6 +36,7 @@ import { MatiereListComponent } from './pages/matiere-list/matiere-list.componen
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { ChampPhotoComponent } from './components/champ-photo/champ-photo.component';
 import { FormContainerComponent } from './pages/form-container/form-container.component';
+import { RendreDevoirDialogComponent } from './components/rendre-devoir-dialog/rendre-devoir-dialog.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -52,7 +55,8 @@ registerLocaleData(localeFr, 'fr');
     MatiereListComponent,
     CreateUserComponent,
     ChampPhotoComponent,
-    FormContainerComponent
+    FormContainerComponent,
+    RendreDevoirDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ registerLocaleData(localeFr, 'fr');
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatDialogModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},

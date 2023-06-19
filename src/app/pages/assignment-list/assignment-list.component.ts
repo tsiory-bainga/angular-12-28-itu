@@ -18,4 +18,23 @@ export class AssignmentListComponent {
   getAssignments() {
     this.listeAssignments = this.assignmentService.getAssignments();
   }
+  getRenduAssignments() {
+    this.listeAssignments = this.assignmentService.getRenduAssignments();
+  }
+  getNotRenduAssignments() {
+    this.listeAssignments = this.assignmentService.getNotRenduAssignments();
+  }
+
+
+
+  onTabChange(event: any) {
+    const selectedIndex = event.index;
+    if (selectedIndex === 0) {
+      this.getAssignments();
+    } else if (selectedIndex === 1) {
+      this.getRenduAssignments();
+    } else if (selectedIndex === 2) {
+      this.getNotRenduAssignments();
+    }
+  }
 }

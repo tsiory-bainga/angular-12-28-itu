@@ -1,1 +1,38 @@
-<p>matiere-list works!</p>
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold">Liste des Matières</h4>
+        <div class="card">
+            <h5 class="card-header">Matières</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Matière</th>
+                            <th>Nom du Professeur</th>
+                            <th>Photo du Professeur</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        <tr *ngFor="let matiere of listeMatieres">
+                            <td>
+                                <img [src]="matiere.photo" width="65px" height="65px" />
+                            </td>
+                            <td>
+                                <strong>{{ matiere.nom }}</strong>
+                            </td>
+                            <td>{{ matiere.nomProf }}</td>
+                            <td>
+                                <img [src]="matiere.photoProf" width="65px" height="65px" />
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

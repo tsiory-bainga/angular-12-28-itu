@@ -11,4 +11,12 @@ export class AssignmentService {
     getAssignments() : Assignment[] {
         return bdInitialAssignments;
     }
+    getRenduAssignments() : Assignment[] {
+        let allAssignments = bdInitialAssignments;
+        return allAssignments.filter(a => a.rendu == true);
+    }
+    getNotRenduAssignments() : Assignment[] {
+        let allAssignments = bdInitialAssignments;
+        return allAssignments.filter(a => a.rendu == false);
+    } 
 }
