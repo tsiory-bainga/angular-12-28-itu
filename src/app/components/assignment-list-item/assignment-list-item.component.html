@@ -5,7 +5,9 @@
         <mat-card-title>{{ assignment.titre }}</mat-card-title>
         <mat-card-subtitle>{{ assignment.nomAuteur }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{ assignment.matiere.photo }}">
+    <div style="display: flex;justify-content: center;">
+        <img mat-card-image src="{{ assignment.matiere.photo }}" class="text-center height-custom">
+    </div>
     <mat-card-content class="card-body">
         <h5 class="mt-3 card-title">{{ assignment.matiere.nom }}</h5>
         <p>Date de rendu : {{ assignment.dateRendu | date:'d MMMM y' : 'fr' }}</p>

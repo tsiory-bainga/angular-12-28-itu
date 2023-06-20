@@ -52,7 +52,9 @@ export class EditMatiereComponent {
         photoProf : this.photoProf
       } 
       
-      this.matiereService.updateMatiere(id, matiere).subscribe();
+      this.matiereService.updateMatiere(id, matiere).subscribe(
+        
+      );
       this.router.navigate(['/matieres']);
     }
     else{
