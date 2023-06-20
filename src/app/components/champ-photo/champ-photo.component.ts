@@ -13,7 +13,6 @@ export class ChampPhotoComponent {
   @Output() fileSelected: EventEmitter<FileList> = new EventEmitter<FileList>();
 
   onFileChange(event: Event): void {
-    debugger;
     const inputElement = event.target as HTMLInputElement;
     const files = inputElement.files;
     if(files != null)

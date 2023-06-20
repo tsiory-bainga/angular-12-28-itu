@@ -23,12 +23,10 @@ export class CreateMatiereComponent {
   
   onFileChangePhotoMatiere(files: FileList): void {
     console.log("photo matiere");
-    debugger;
     this.convertToBase64PhotoMatiere(files[0]);
   }
   onFileChangePhotoProf(files: FileList): void {
     console.log("Pooo");
-    debugger;
     this.convertToBase64PhotoProf(files[0]);
   }
   convertToBase64PhotoMatiere(file: File) {
