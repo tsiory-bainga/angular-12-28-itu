@@ -36,18 +36,26 @@ export class EditAssignmentComponent {
       this.listeMatieres = data;
     });
     this.getAssignment();
+    if(localStorage.getItem('isAdmin') == 'false'){
+      this.router.navigate(['/assignments']);
+    }
   }
   getAssignment() {
     const id = this.route.snapshot.params['id'];
     this.assignmentsService.getAssignment(id)
     .subscribe(data => {
-      this.assignment = data;  
-      this.photoAuteur = data.photoAuteur;
-      this.nomAuteur = data.nomAuteur;
-      this.titre = data.titre;
-      this.ancienMatiere = data.matiere;
-      this.matiere = data.matiere._id;
-      this.dateRendu = data.dateRendu;
+      if(data.rendu){
+        this.router.navigate(['/assignments']);
+      }
+      else{
+        this.assignment = data;  
+        this.photoAuteur = data.photoAuteur;
+        this.nomAuteur = data.nomAuteur;
+        this.titre = data.titre;
+        this.ancienMatiere = data.matiere;
+        this.matiere = data.matiere._id;
+        this.dateRendu = data.dateRendu;
+      }
     });
     if (!this.assignment) return;
   };

@@ -12,8 +12,8 @@
         <p>Professeur : M. {{ assignment.matiere.nomProf }}</p>
     </mat-card-content>
     <mat-card-actions class="card-body justify-content-center">
-        <a routerLink="/assignments/{{ assignment._id }}/edit" class="card-link">Modifier</a>
+        <a *ngIf="isAdmin == 'true' && !assignment.rendu" routerLink="/assignments/{{ assignment._id }}/edit" class="card-link">Modifier</a>
         <a href="javascript:void(0)" *ngIf="!assignment.rendu" (click)="openDialog()" class="card-link">Rendre</a>
-        <a href="/assignments" (click)="deleteAssignment()" class="card-link">Suppr</a>
+        <a *ngIf="isAdmin == 'true' && !assignment.rendu" href="/assignments" (click)="deleteAssignment()" class="card-link">Suppr</a>
     </mat-card-actions>
 </mat-card>

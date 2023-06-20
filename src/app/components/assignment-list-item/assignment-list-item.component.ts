@@ -12,11 +12,15 @@ import { Router } from '@angular/router';
 })
 export class AssignmentListItemComponent {
   @Input() assignment! : Assignment;
+  isAdmin: any;
   constructor(public dialog: MatDialog, private assignmentsService: AssignmentService, private router: Router) {}
+
+  ngOnInit(){
+    this.isAdmin = localStorage.getItem('isAdmin');
+  }
 
   openDialog(): void {
     
-    console.log(this.assignment._id);
     const dialogRef = this.dialog.open(RendreDevoirDialogComponent, {
       width: '500px',
       panelClass : 'rounded-border',
