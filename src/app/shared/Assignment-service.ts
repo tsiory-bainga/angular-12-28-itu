@@ -15,7 +15,6 @@ export class AssignmentService {
     // uri_api = 'https://mbds-madagascar-2022-2023-back-end.onrender.com/api/assignments';
 
     getAssignments() : Observable<any> {
-        // return bdInitialAssignments;
         return this.http.get<Assignment[]>(this.uri_api + '/assignments');
     }
     getRenduAssignments() : Observable<any> {
@@ -28,8 +27,6 @@ export class AssignmentService {
     }
     
     getAssignment(id : string) : Observable<any> {
-        // let allAssignments = bdInitialAssignments;
-        // return allAssignments.filter(a => a._id == id)[0];
         return this.http.get<Assignment>(this.uri_api + '/assignments/' + id);
     } 
 
