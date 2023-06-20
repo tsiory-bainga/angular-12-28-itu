@@ -1,4 +1,4 @@
-<form ngForm #loginForm class="mb-3">
+<form ngForm (ngSubmit)="register()" #loginForm class="mb-3">
     <div class="mb-2">
         <label for="username" class="form-label">Nom d'utilisateur</label>
         <input matInput type="text" name="username" class="form-control" [(ngModel)]="username" placeholder="Entrez votre nom d'utilisateur" />
@@ -28,6 +28,7 @@
     <div class="mb-2">
         <button class="btn btn-primary d-grid w-100" type="submit">S'Inscrire</button>
     </div>
+    <p style="color: red;" *ngIf="message">{{ message }}<p>
 </form>
 <p class="text-center">
     <span>Vous avez un compte ? </span>
