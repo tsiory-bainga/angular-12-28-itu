@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { registerLocaleData } from '@angular/common';
@@ -79,6 +81,8 @@ registerLocaleData(localeFr, 'fr');
     MatTabsModule,
     MatDialogModule,
     MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
     HttpClientModule
   ],
   providers: [
