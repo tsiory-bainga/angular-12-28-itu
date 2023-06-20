@@ -18,5 +18,9 @@ export class AssignmentService {
     getNotRenduAssignments() : Assignment[] {
         let allAssignments = bdInitialAssignments;
         return allAssignments.filter(a => a.rendu == false);
-    } 
+    }
+    getAssignment(id : string) : Assignment {
+        let allAssignments = bdInitialAssignments;
+        return allAssignments.filter(a => a._id == id)[0];
+    }
 }

@@ -12,9 +12,9 @@ export class MatiereListComponent {
 
   constructor(private matiereService : MatiereService) { }
   ngOnInit() : void {
-    this.getAssignments();
+    this.getMatieres();
   }
-  getAssignments() {
+  getMatieres() {
     this.listeMatieres = this.matiereService.getMatieres();
   }
 }

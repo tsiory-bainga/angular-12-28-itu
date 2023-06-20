@@ -11,4 +11,8 @@ export class MatiereService {
     getMatieres() : Matiere[] {
         return bdInitialMatieres;
     }
+    getMatiere(id : string) : Matiere{
+        let allMatieres = bdInitialMatieres;
+        return allMatieres.filter(a => a._id == id)[0];
+    }
 }

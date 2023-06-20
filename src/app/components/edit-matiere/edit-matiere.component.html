@@ -1,1 +1,31 @@
-<p>edit-matiere works!</p>
+<form ngForm #matiereForm>
+    <div class="row">
+        <div class="mb-4 col-md-6">
+            <app-champ-photo [src]="photo" titre="Photo pour la matière" utilisation="Matiere"></app-champ-photo>
+        </div>
+        <div class="mb-4 col-md-6">
+            <app-champ-photo [src]="photoProf" titre="Photo du professeur" utilisation="Prof"></app-champ-photo>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-6">
+            <label for="firstName" class="form-label">Nom de la matière</label>
+            <mat-form-field class="form-control champ-form">
+                <mat-label>Nom de la matière</mat-label>
+                <input matInput name="nom" [(ngModel)]="nom">
+            </mat-form-field>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label for="firstName" class="form-label">Professeur</label>
+            <mat-form-field class="form-control champ-form">
+                <mat-label>Nom du professeur</mat-label>
+                <input matInput name="nomProf" [(ngModel)]="nomProf">
+            </mat-form-field>
+        </div>
+        
+    </div>
+    <div class="mt-2">
+        <button type="submit" class="btn btn-primary me-2">Modifier la Matière</button>
+        <button type="reset" class="btn btn-outline-secondary">Effacer</button>
+    </div>
+</form>

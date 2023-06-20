@@ -16,6 +16,7 @@ export class AssignmentListItemComponent {
     console.log(this.assignment._id);
     const dialogRef = this.dialog.open(RendreDevoirDialogComponent, {
       width: '500px',
+      panelClass : 'rounded-border',
       data: {
           "_id" : this.assignment._id,
           "photoAuteur" : this.assignment.photoAuteur,
