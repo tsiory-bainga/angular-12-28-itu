@@ -12,6 +12,7 @@ import { AssignmentService } from 'src/app/shared/Assignment-service';
 export class RendreDevoirDialogComponent {
   note: string = '';
   remarque: string = '';
+  message: any;
   constructor(
     public dialogRef: MatDialogRef<RendreDevoirDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data : Assignment,
@@ -25,7 +26,8 @@ export class RendreDevoirDialogComponent {
 
   rendreDevoir(){
     let note = parseInt(this.note);
-    if(note && note<20 && note>=0){
+    if(note && note<=20 && note>=0){
+      this.message = null;
       let assignment = {
         note: this.note,
         remarque: this.remarque,
@@ -36,7 +38,7 @@ export class RendreDevoirDialogComponent {
       this.router.navigate(['/assignments']);
     }
     else{
-      
+      this.message = "Note invalide";
     }
   }
 }

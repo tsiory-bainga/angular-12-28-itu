@@ -27,9 +27,10 @@ export class AssignmentService {
         return this.http.get<Assignment[]>(this.uri_api + '/assignmentsNonRendu');
     }
     
-    getAssignment(id : string) : Assignment {
-        let allAssignments = bdInitialAssignments;
-        return allAssignments.filter(a => a._id == id)[0];
+    getAssignment(id : string) : Observable<any> {
+        // let allAssignments = bdInitialAssignments;
+        // return allAssignments.filter(a => a._id == id)[0];
+        return this.http.get<Assignment>(this.uri_api + '/assignments/' + id);
     } 
 
     addAssignment(assignment:Assignment):Observable<any> {
@@ -40,7 +41,7 @@ export class AssignmentService {
         return this.http.put(this.uri_api + "/assignments/" + id, assignment);
     }
 
-    deleteAssignment(id : string):Observable<any> {
+    deleteAssignment(id : any):Observable<any> {
         return this.http.delete(this.uri_api + "/assignments/" + id)
     }
 }

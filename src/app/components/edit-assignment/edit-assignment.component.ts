@@ -14,12 +14,13 @@ export class EditAssignmentComponent {
   photoAuteur : string = '../assets/img/avatars/1.png';
   nomAuteur : string = '';
   titre : string = '';
-  matiere : string = '';
+  matiere : any;
+  ancienMatiere : any;
   dateRendu! : Date;
-
   assignment! : Assignment | undefined;
 
   listeMatieres : Matiere[] = [];
+  message: any;
   
   
   constructor(
@@ -38,14 +39,55 @@ export class EditAssignmentComponent {
   }
   getAssignment() {
     const id = this.route.snapshot.params['id'];
-    this.assignment = this.assignmentsService.getAssignment(id);
+    this.assignmentsService.getAssignment(id)
+    .subscribe(data => {
+      this.assignment = data;  
+      this.photoAuteur = data.photoAuteur;
+      this.nomAuteur = data.nomAuteur;
+      this.titre = data.titre;
+      this.ancienMatiere = data.matiere;
+      this.matiere = data.matiere;
+      this.dateRendu = data.dateRendu;
+    });
     if (!this.assignment) return;
-    
-    this.photoAuteur = this.assignment.photoAuteur;
-    this.nomAuteur = this.assignment.nomAuteur;
-    this.titre = this.assignment.titre;
-    // this.matiere = this.assignment.matiere;
-    this.dateRendu = this.assignment.dateRendu;
   };
+
+  updateAssigment(){
+    const id = this.route.snapshot.params['id'];
+    if(this.matiere && this.titre && this.nomAuteur && this.dateRendu){
+      this.message = null;
+      let assignment : any;
+      let matiere: any;
+      if (this.ancienMatiere.nom !== this.matiere.nom) {
+        matiere ={
+          _id: this.matiere._id,
+          nom : this.matiere.nom,
+          nomProf : this.matiere.nomProf,
+          photo : this.matiere.photo,
+          photoProf : this.matiere.photoProf
+        } 
+        assignment = {
+          photoAuteur : this.photoAuteur,
+          titre : this.titre,
+          nomAuteur : this.nomAuteur,
+          matiere : matiere,
+          dateRendu : new Date(this.dateRendu)
+        }
+      }
+      else{
+        assignment = {
+          photoAuteur : this.photoAuteur,
+          titre : this.titre,
+          nomAuteur : this.nomAuteur,
+          dateRendu : new Date(this.dateRendu)
+        }
+      }
+      this.assignmentsService.updateAssignment(id, assignment).subscribe();
+      this.router.navigate(['/assignments']);
+    }
+    else{
+      this.message = 'Veuillez remplir tous les champs';
+    }
+  }
 }
  

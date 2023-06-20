@@ -53,7 +53,7 @@ export class CreateAssignmentComponent {
       this.router.navigate(['/assignments']);
     }
     else{
-      this.message = 'Veuillez remplir tous les champs'
+      this.message = 'Veuillez remplir tous les champs';
     }
   }
 }
