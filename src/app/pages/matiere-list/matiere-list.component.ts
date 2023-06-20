@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Matiere } from 'src/app/models/Matiere-model';
 import { MatiereService } from 'src/app/shared/Matiere-service';
 
@@ -10,7 +11,11 @@ import { MatiereService } from 'src/app/shared/Matiere-service';
 export class MatiereListComponent {
   listeMatieres : Matiere[] = [];
 
-  constructor(private matiereService : MatiereService) { }
+  constructor(  
+    private matiereService : MatiereService,
+    private router: Router
+  ) { }
+
   ngOnInit() : void {
     this.getMatieres();
   }
@@ -19,5 +24,13 @@ export class MatiereListComponent {
     .subscribe(data => {
       this.listeMatieres = data;
     });
+  }
+  deleteMatiere(matiere : any){
+    this.matiereService.deleteMatiere(matiere._id)
+    .subscribe(
+      ()=>{
+        this.getMatieres();
+      }
+    );
   }
 }

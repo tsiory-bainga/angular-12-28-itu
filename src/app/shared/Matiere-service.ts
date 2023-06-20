@@ -28,11 +28,11 @@ export class MatiereService {
         return this.http.post<Matiere>(this.uri_api, Matiere);
     }
 
-    updateMatiere(Matiere:Matiere):Observable<any> {
-        return this.http.put<Matiere>(this.uri_api, Matiere);
+    updateMatiere(id : any, matiere : any):Observable<any> {
+        return this.http.put<Matiere>(this.uri_api + "/" + id, matiere);
     }
 
-    deleteMatiere(Matiere:Matiere):Observable<any> {
-        return this.http.delete(this.uri_api + "/" + Matiere._id)
+    deleteMatiere(id : any):Observable<any> {
+        return this.http.delete(this.uri_api + "/" + id)
     }
 }

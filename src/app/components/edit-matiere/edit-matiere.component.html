@@ -1,4 +1,4 @@
-<form ngForm #matiereForm>
+<form ngForm (ngSubmit)="updateMatiere()" #matiereForm>
     <div class="row">
         <div class="mb-4 col-md-6">
             <app-champ-photo [src]="photo" titre="Photo pour la matière" utilisation="Matiere"></app-champ-photo>
@@ -28,4 +28,5 @@
         <button type="submit" class="btn btn-primary me-2">Modifier la Matière</button>
         <button type="reset" class="btn btn-outline-secondary">Effacer</button>
     </div>
+    <p style="color: red;" *ngIf="message">{{ message }}<p>
 </form>

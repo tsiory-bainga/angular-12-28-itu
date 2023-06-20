@@ -22,7 +22,7 @@
             <mat-form-field class="form-control champ-form">
                 <mat-label>Matière</mat-label>
                 <mat-select name="matiere" [(ngModel)]="matiere">
-                    <mat-option *ngFor="let matiere of listeMatieres" [value]="matiere">
+                    <mat-option *ngFor="let matiere of listeMatieres" [value]="matiere._id">
                         {{ matiere.nom }}
                     </mat-option>
                 </mat-select>

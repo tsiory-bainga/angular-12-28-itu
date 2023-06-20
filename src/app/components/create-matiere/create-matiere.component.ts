@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Matiere } from 'src/app/models/Matiere-model';
 import { MatiereService } from 'src/app/shared/Matiere-service';
 
@@ -12,20 +13,28 @@ export class CreateMatiereComponent {
   nomProf : string = '';
   photoProf : string = '../assets/img/avatars/1.png';
   photo : string = '../assets/img/avatars/2.png';
+  message: any;
 
-  constructor( private matiereService : MatiereService) { }
+  constructor( private matiereService : MatiereService, private router : Router) { }
 
   ngOnInit() : void {
   }
 
   addMatiere(){
-    let matiere : Matiere ={
-      nom : this.nom,
-      nomProf : this.nomProf,
-      photo : this.photo,
-      photoProf : this.photoProf,
+    if(this.nom && this.nomProf){
+      this.message=null;
+      let matiere : Matiere ={
+        nom : this.nom,
+        nomProf : this.nomProf,
+        photo : this.photo,
+        photoProf : this.photoProf,
+      }
+      this.matiereService.addMatiere(matiere).subscribe();
+      this.router.navigate(['/matieres']);
     }
-    this.matiereService.addMatiere(matiere).subscribe();
+    else{
+      this.message = 'Veuillez remplir tous les champs';
+    }
   }
 
 }

@@ -46,7 +46,7 @@ export class EditAssignmentComponent {
       this.nomAuteur = data.nomAuteur;
       this.titre = data.titre;
       this.ancienMatiere = data.matiere;
-      this.matiere = data.matiere;
+      this.matiere = data.matiere._id;
       this.dateRendu = data.dateRendu;
     });
     if (!this.assignment) return;
@@ -58,21 +58,30 @@ export class EditAssignmentComponent {
       this.message = null;
       let assignment : any;
       let matiere: any;
-      if (this.ancienMatiere.nom !== this.matiere.nom) {
-        matiere ={
-          _id: this.matiere._id,
-          nom : this.matiere.nom,
-          nomProf : this.matiere.nomProf,
-          photo : this.matiere.photo,
-          photoProf : this.matiere.photoProf
-        } 
-        assignment = {
-          photoAuteur : this.photoAuteur,
-          titre : this.titre,
-          nomAuteur : this.nomAuteur,
-          matiere : matiere,
-          dateRendu : new Date(this.dateRendu)
-        }
+      console.log(this.matiere);
+      
+      if (this.ancienMatiere._id !== this.matiere) { 
+        this.matiereService.getMatiereById(this.matiere)
+        .subscribe(data => {
+          console.log(data);
+          
+          matiere ={
+            _id: data._id,
+            nom : data.nom,
+            nomProf : data.nomProf,
+            photo : data.photo,
+            photoProf : data.photoProf
+          } 
+          assignment = {
+            photoAuteur : this.photoAuteur,
+            titre : this.titre,
+            nomAuteur : this.nomAuteur,
+            matiere : matiere,
+            dateRendu : new Date(this.dateRendu)
+          }
+          this.assignmentsService.updateAssignment(id, assignment).subscribe();
+          this.router.navigate(['/assignments']);
+        });
       }
       else{
         assignment = {
@@ -81,9 +90,9 @@ export class EditAssignmentComponent {
           nomAuteur : this.nomAuteur,
           dateRendu : new Date(this.dateRendu)
         }
+        this.assignmentsService.updateAssignment(id, assignment).subscribe();
+        this.router.navigate(['/assignments']);
       }
-      this.assignmentsService.updateAssignment(id, assignment).subscribe();
-      this.router.navigate(['/assignments']);
     }
     else{
       this.message = 'Veuillez remplir tous les champs';
