@@ -11,35 +11,36 @@ export class AssignmentService {
     constructor(
         private http:HttpClient
     ) { }
-    uri_api = 'http://localhost:8010/api/assignments';
+    uri_api = 'http://localhost:8010/api';
     // uri_api = 'https://mbds-madagascar-2022-2023-back-end.onrender.com/api/assignments';
 
     getAssignments() : Observable<any> {
         // return bdInitialAssignments;
-        return this.http.get<Assignment[]>(this.uri_api);
+        return this.http.get<Assignment[]>(this.uri_api + '/assignments');
     }
-    getRenduAssignments() : Assignment[] {
-        let allAssignments = bdInitialAssignments;
-        return allAssignments.filter(a => a.rendu == true);
+    getRenduAssignments() : Observable<any> {
+        // let allAssignments = bdInitialAssignments;
+        // return allAssignments.filter(a => a.rendu == true);
+        return this.http.get<Assignment[]>(this.uri_api + '/assignmentsRendu');
     }
-    getNotRenduAssignments() : Assignment[] {
-        let allAssignments = bdInitialAssignments;
-        return allAssignments.filter(a => a.rendu == false);
+    getNotRenduAssignments() : Observable<any> {
+        return this.http.get<Assignment[]>(this.uri_api + '/assignmentsNonRendu');
     }
+    
     getAssignment(id : string) : Assignment {
         let allAssignments = bdInitialAssignments;
         return allAssignments.filter(a => a._id == id)[0];
     } 
 
     addAssignment(assignment:Assignment):Observable<any> {
-        return this.http.post<Assignment>(this.uri_api, assignment);
+        return this.http.post<Assignment>(this.uri_api+ '/assignments', assignment);
     }
 
-    updateAssignment(assignment:Assignment):Observable<any> {
-        return this.http.put<Assignment>(this.uri_api, assignment);
+    updateAssignment(id: any, assignment : Object):Observable<any> {
+        return this.http.put(this.uri_api + "/assignments/" + id, assignment);
     }
 
-    deleteAssignment(assignment:Assignment):Observable<any> {
-        return this.http.delete(this.uri_api + "/" + assignment._id)
+    deleteAssignment(id : string):Observable<any> {
+        return this.http.delete(this.uri_api + "/assignments/" + id)
     }
 }

@@ -1,21 +1,20 @@
 <h1 mat-dialog-title>Rendre {{ data.titre }} ?</h1>
 <div mat-dialog-content>
     <p>Devoir {{ data.matiere.nom }}</p>
-    <form>
-
+    <form ngForm (ngSubmit)="rendreDevoir()">
+        <div class="mb-3">
+            <label for="note" class="form-label">Note</label>
+            <mat-form-field class="form-control champ-form">
+                <mat-label>Note sur 20</mat-label>
+                <input matInput type="number" name="note" [(ngModel)]="note">
+            </mat-form-field>
+        </div>
+        <div class="mb-3">
+            <label for="remarque" class="form-label">Remarques</label>
+            <textarea matInput class="form-control" name="remarque" [(ngModel)]="remarque"></textarea>
+        </div>
+        <div class="mt-4 mb-3">
+            <button class="btn btn-primary d-grid w-100" type="submit">Rendre l'Assignment</button>
+        </div>
     </form>
-    <div class="mb-3">
-        <label for="note" class="form-label">Note</label>
-        <mat-form-field class="form-control champ-form">
-            <mat-label>Note sur 20</mat-label>
-            <input matInput type="number" name="note" [(ngModel)]="data.note">
-        </mat-form-field>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Remarques</label>
-        <textarea matInput class="form-control" [(ngModel)]="data.remarque"></textarea>
-    </div>
-    <div class="mt-4 mb-3">
-        <button class="btn btn-primary d-grid w-100" type="submit">Rendre l'Assignment</button>
-    </div>
 </div>

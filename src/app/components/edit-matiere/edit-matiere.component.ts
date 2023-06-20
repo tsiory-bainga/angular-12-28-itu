@@ -27,7 +27,10 @@ export class EditMatiereComponent {
   }
   getMatiere() {
     const id = this.route.snapshot.params['id'];
-    this.matiere = this.matiereService.getMatiere(id);
+    this.matiereService.getMatiereById(id)
+    .subscribe(data =>{
+        this.matiere = data;
+    });
     if (!this.matiere) return;
     
     this.nom = this.matiere.nom;

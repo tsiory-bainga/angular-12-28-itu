@@ -22,10 +22,16 @@ export class AssignmentListComponent {
     });
   }
   getRenduAssignments() {
-    this.listeAssignments = this.assignmentService.getRenduAssignments();
+    this.assignmentService.getRenduAssignments()
+    .subscribe(data => {
+      this.listeAssignments = data;
+    });
   }
   getNotRenduAssignments() {
-    this.listeAssignments = this.assignmentService.getNotRenduAssignments();
+    this.assignmentService.getNotRenduAssignments()
+    .subscribe(data => {
+      this.listeAssignments = data;
+    });
   }
 
 

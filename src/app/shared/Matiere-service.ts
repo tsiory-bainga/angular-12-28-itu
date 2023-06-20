@@ -18,7 +18,13 @@ export class MatiereService {
         //return bdInitialMatieres;
         return this.http.get<Matiere[]>(this.uri_api);
     }
-    addMatiere(Matiere:Matiere):Observable<any> {
+
+    getMatiereById(id : number) : Observable<any> {
+        //return bdInitialMatieres;
+        return this.http.get<Matiere>(this.uri_api + "/" + id);
+    }
+
+    addMatiere(Matiere:Matiere) : Observable<any> {
         return this.http.post<Matiere>(this.uri_api, Matiere);
     }
 
@@ -28,9 +34,5 @@ export class MatiereService {
 
     deleteMatiere(Matiere:Matiere):Observable<any> {
         return this.http.delete(this.uri_api + "/" + Matiere._id)
-    }
-    getMatiere(id : string) : Matiere{
-        let allMatieres = bdInitialMatieres;
-        return allMatieres.filter(a => a._id == id)[0];
     }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Assignment } from 'src/app/models/Assignement-model';
 import { Matiere } from 'src/app/models/Matiere-model';
 import { AssignmentService } from 'src/app/shared/Assignment-service';
@@ -17,8 +18,9 @@ export class CreateAssignmentComponent {
   dateRendu! : Date;
 
   listeMatieres : Matiere[] = [];
+  message: any;
 
-  constructor(private assignmentService : AssignmentService, private matiereService : MatiereService) { }
+  constructor(private assignmentService : AssignmentService, private matiereService : MatiereService, private router: Router) { }
   ngOnInit() : void {
     this.getMatieres();
   }
@@ -29,21 +31,29 @@ export class CreateAssignmentComponent {
     });
   }
   addAssigment(){
-    let matiere : Matiere ={
-      _id: this.matiere._id,
-      nom : this.matiere.nom,
-      nomProf : this.matiere.nomProf,
-      photo : this.matiere.photo,
-      photoProf : this.matiere.photoProf,
+  
+    if(this.matiere && this.titre && this.nomAuteur && this.dateRendu){
+      this.message = null;
+      let matiere : Matiere ={
+        _id: this.matiere._id,
+        nom : this.matiere.nom,
+        nomProf : this.matiere.nomProf,
+        photo : this.matiere.photo,
+        photoProf : this.matiere.photoProf,
+      }
+      let assignment : Assignment = {
+        photoAuteur : this.photoAuteur,
+        titre : this.titre,
+        nomAuteur : this.nomAuteur,
+        matiere : matiere,
+        dateRendu : new Date(this.dateRendu),
+        rendu : false
+      }
+      this.assignmentService.addAssignment(assignment).subscribe();
+      this.router.navigate(['/assignments']);
     }
-    let assignment : Assignment = {
-      photoAuteur : this.photoAuteur,
-      titre : this.titre,
-      nomAuteur : this.nomAuteur,
-      matiere : matiere,
-      dateRendu : this.dateRendu,
-      rendu : false
+    else{
+      this.message = 'Veuillez remplir tous les champs'
     }
-    this.assignmentService.addAssignment(assignment).subscribe();
   }
 }
