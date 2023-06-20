@@ -1,6 +1,6 @@
 <form ngForm (ngSubmit)="addAssigment()" #assignmentForm>
     <div class="mb-4">
-        <app-champ-photo [src]="photoAuteur" titre="Photo de l'auteur" utilisation="Assignment"></app-champ-photo>
+        <app-champ-photo (fileSelected)="onFileSelected($event)" [src]="photoAuteur" titre="Photo de l'auteur" utilisation="Assignment"></app-champ-photo>
     </div>
     <div class="row">
         <div class="mb-3 col-md-6">

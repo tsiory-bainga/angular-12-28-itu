@@ -9,11 +9,11 @@
     <mat-card-content class="card-body">
         <h5 class="card-title">{{ assignment.matiere.nom }}</h5>
         <p>Date de rendu : {{ assignment.dateRendu | date:'d MMMM y' : 'fr' }}</p>
-        <p>Professeur : M. {{ assignment.matiere.nomProf }}</p>
+        <p>Professeur : {{ assignment.matiere.nomProf }}</p>
     </mat-card-content>
     <mat-card-actions class="card-body justify-content-center">
         <a *ngIf="isAdmin == 'true' && !assignment.rendu" routerLink="/assignments/{{ assignment._id }}/edit" class="card-link">Modifier</a>
         <a href="javascript:void(0)" *ngIf="!assignment.rendu" (click)="openDialog()" class="card-link">Rendre</a>
-        <a *ngIf="isAdmin == 'true' && !assignment.rendu" href="/assignments" (click)="deleteAssignment()" class="card-link">Suppr</a>
+        <a href="/assignments" *ngIf="isAdmin == 'true' && !assignment.rendu" (click)="deleteAssignment()" class="card-link">Suppr</a>
     </mat-card-actions>
 </mat-card>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subscriber } from 'rxjs';
 import { Assignment } from 'src/app/models/Assignement-model';
 import { Matiere } from 'src/app/models/Matiere-model';
 import { AssignmentService } from 'src/app/shared/Assignment-service';
@@ -30,6 +31,32 @@ export class CreateAssignmentComponent {
       this.listeMatieres = data;
     });
   }
+  onFileSelected(files: FileList): void {
+    console.log(files[0]);
+    this.convertToBase64(files[0]);
+  }
+  convertToBase64(file: File) {
+    const observable = new Observable((subscriber: Subscriber<any>) => {
+      this.readFile(file, subscriber)
+    })
+    observable.subscribe((d) => {
+      console.log(d);
+      this.photoAuteur = d;
+    })
+  }
+
+  readFile(file: File, subscriber: Subscriber<any>) {
+    const fileReader = new FileReader()
+    fileReader.readAsDataURL(file)
+    fileReader.onload = () => {
+      subscriber.next(fileReader.result)
+      subscriber.complete()
+    }
+    fileReader.onerror = (error) => {
+      subscriber.error(error)
+      subscriber.complete()
+    }
+  }
   addAssigment(){
   
     if(this.matiere && this.titre && this.nomAuteur && this.dateRendu){
@@ -49,8 +76,11 @@ export class CreateAssignmentComponent {
         dateRendu : new Date(this.dateRendu),
         rendu : false
       }
-      this.assignmentService.addAssignment(assignment).subscribe();
-      this.router.navigate(['/assignments']);
+      this.assignmentService.addAssignment(assignment).subscribe(
+        (data : any)=> {
+          this.router.navigate(['/assignments']);
+        }, err => { console.log(err) }
+      );
     }
     else{
       this.message = 'Veuillez remplir tous les champs';

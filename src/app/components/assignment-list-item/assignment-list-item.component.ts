@@ -41,6 +41,10 @@ export class AssignmentListItemComponent {
     });
   }
   deleteAssignment(){
-    this.assignmentsService.deleteAssignment(this.assignment._id).subscribe();
+    this.assignmentsService.deleteAssignment(this.assignment._id).subscribe(
+      (data) => {
+        this.router.navigate(['/assignments']);
+      }
+    );
   }
 }

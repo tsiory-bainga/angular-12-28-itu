@@ -1,10 +1,10 @@
 <form ngForm (ngSubmit)="addMatiere()" #matiereForm>
     <div class="row">
         <div class="mb-4 col-md-6">
-            <app-champ-photo [src]="photo" titre="Photo pour la matière" utilisation="Matiere"></app-champ-photo>
+            <app-champ-photo (fileSelected)="onFileChangePhotoMatiere($event)" src="{{photo}}" titre="Photo pour la matière" utilisation="Matiere"></app-champ-photo>
         </div>
         <div class="mb-4 col-md-6">
-            <app-champ-photo [src]="photoProf" titre="Photo du professeur" utilisation="Prof"></app-champ-photo>
+            <app-champ-photo (fileSelected)="onFileChangePhotoProf($event)" src="{{photoProf}}" titre="Photo du professeur" utilisation="Prof"></app-champ-photo>
         </div>
     </div>
     <div class="row">

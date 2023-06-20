@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-    uri_api = 'http://localhost:8010/api';
+    uri_api = 'https://backend-12-28-madagascar.onrender.com/api';
     
     logIn(user : User) : Observable<any> {
         return this.http.post<User>(this.uri_api + '/login', user);

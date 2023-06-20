@@ -11,7 +11,7 @@ export class AssignmentService {
     constructor(
         private http:HttpClient
     ) { }
-    uri_api = 'http://localhost:8010/api';
+    uri_api = 'https://backend-12-28-madagascar.onrender.com/api';
     // uri_api = 'https://mbds-madagascar-2022-2023-back-end.onrender.com/api/assignments';
 
     getAssignments() : Observable<any> {

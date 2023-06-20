@@ -12,7 +12,7 @@ export class MatiereService {
         private http:HttpClient
     ) { }
 
-    uri_api = 'http://localhost:8010/api/matieres';
+    uri_api = 'https://backend-12-28-madagascar.onrender.com/api/matieres';
 
     getMatieres() : Observable<any> {
         //return bdInitialMatieres;
