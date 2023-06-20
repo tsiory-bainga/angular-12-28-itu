@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar-sidebar',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class ToolbarSidebarComponent {
 
+  constructor( private router: Router) { }
+
+  ngOnInit(){
+    if(!localStorage.getItem('isAdmin')){
+      this.router.navigate(['/login']);
+    }
+  }
+  logOut(){
+    localStorage.removeItem('isAdmin');
+    this.router.navigate(['/login']);
+  }
 }

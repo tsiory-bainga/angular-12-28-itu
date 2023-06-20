@@ -14,6 +14,14 @@ import { FormContainerComponent } from './pages/form-container/form-container.co
 
 const routes: Routes = [
   {
+    path : '',
+    component : LoginPageComponent,
+    children: [
+      { path: '', component: LoginFormComponent },
+      { path: 'register', component: CreateUserComponent }
+    ]
+  },
+  {
     path : 'login',
     component : LoginPageComponent,
     children: [

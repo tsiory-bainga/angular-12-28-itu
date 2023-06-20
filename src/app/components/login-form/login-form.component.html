@@ -1,11 +1,11 @@
-<form ngForm #loginForm class="mb-3">
+<form ngForm (ngSubmit)="login()" #loginForm class="mb-3">
     <div class="mb-3">
         <label for="username" class="form-label">Nom d'utilisateur</label>
-        <input matInput type="text" class="form-control" [(ngModel)]="username" placeholder="Entrez votre nom d'utilisateur" />
+        <input matInput type="text" class="form-control" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Entrez votre nom d'utilisateur" />
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Mot de Passe</label>
-        <input matInput type="password" class="form-control" [(ngModel)]="password" placeholder="Mot de Passe" />
+        <input matInput type="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Mot de Passe" />
     </div>
     <div class="mb-1">
         <div class="form-check"></div>
@@ -13,6 +13,7 @@
     <div class="mb-3">
         <button class="btn btn-primary d-grid w-100" type="submit">Se Connecter</button>
     </div>
+    <p style="color: red;" *ngIf="message">{{ message }}<p>
 </form>
 <p class="text-center">
     <span>Vous êtes nouveau ? </span>

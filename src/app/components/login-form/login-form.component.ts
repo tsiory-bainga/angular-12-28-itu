@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/User-model';
 import { UserService } from 'src/app/shared/User-service';
 
@@ -10,15 +11,31 @@ import { UserService } from 'src/app/shared/User-service';
 export class LoginFormComponent {
   username = "";
   password = "";
+  message: any;
 
-  constructor(userservice : UserService) {
+  constructor(private userService : UserService, private router : Router) {
 
   }
-  logIn() {
+  login() {
     let user : User = {
       username : this.username,
       password : this.password
     }
-    this.userservice.lo
+    this.userService.logIn(user)
+    .subscribe( data => {
+      if(data){
+        if(data.auth === true){
+          this.message=null;
+          localStorage.setItem('isAdmin',data.isAdmin);
+          this.router.navigate(['/assignments']);
+        }
+        else{
+          this.message = "mot de passe incorrect";
+        }
+      }
+      else{
+        this.message = "aucun utilisateur trouvé";
+      }
+    });
   }
 }

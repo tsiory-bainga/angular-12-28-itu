@@ -13,7 +13,7 @@ export class UserService {
 
     uri_api = 'http://localhost:8010/api';
     
-    logIn(user : User) {
+    logIn(user : User) : Observable<any> {
         return this.http.post<User>(this.uri_api + '/login', user);
     }
 
