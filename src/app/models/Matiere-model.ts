@@ -1,5 +1,5 @@
 export class Matiere {
-    _id! : string;
+    _id? : string;
     nom! : string;
     nomProf! : string;
     photo : string = '';

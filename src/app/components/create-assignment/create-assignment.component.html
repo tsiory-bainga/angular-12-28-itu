@@ -1,4 +1,4 @@
-<form ngForm #assignmentForm>
+<form ngForm (ngSubmit)="addAssigment()" #assignmentForm>
     <div class="mb-4">
         <app-champ-photo [src]="photoAuteur" titre="Photo de l'auteur" utilisation="Assignment"></app-champ-photo>
     </div>
@@ -22,7 +22,7 @@
             <mat-form-field class="form-control champ-form">
                 <mat-label>Matière</mat-label>
                 <mat-select name="matiere" [(ngModel)]="matiere">
-                    <mat-option *ngFor="let matiere of listeMatieres" value="{{ matiere._id }}">
+                    <mat-option *ngFor="let matiere of listeMatieres" [value]="matiere">
                         {{ matiere.nom }}
                     </mat-option>
                 </mat-select>

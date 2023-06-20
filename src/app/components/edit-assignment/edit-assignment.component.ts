@@ -30,7 +30,10 @@ export class EditAssignmentComponent {
   ) {}
 
   ngOnInit() : void {
-    this.listeMatieres = this.matiereService.getMatieres();
+    this.matiereService.getMatieres()
+    .subscribe(data => {
+      this.listeMatieres = data;
+    });
     this.getAssignment();
   }
   getAssignment() {
@@ -41,7 +44,7 @@ export class EditAssignmentComponent {
     this.photoAuteur = this.assignment.photoAuteur;
     this.nomAuteur = this.assignment.nomAuteur;
     this.titre = this.assignment.titre;
-    this.matiere = this.assignment.matiere._id;
+    // this.matiere = this.assignment.matiere;
     this.dateRendu = this.assignment.dateRendu;
   };
 }

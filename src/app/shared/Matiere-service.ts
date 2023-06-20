@@ -8,8 +8,26 @@ import { bdInitialMatieres } from './data';
     providedIn: 'root'
 })
 export class MatiereService {
-    getMatieres() : Matiere[] {
-        return bdInitialMatieres;
+    constructor(
+        private http:HttpClient
+    ) { }
+
+    uri_api = 'http://localhost:8010/api/matieres';
+
+    getMatieres() : Observable<any> {
+        //return bdInitialMatieres;
+        return this.http.get<Matiere[]>(this.uri_api);
+    }
+    addMatiere(Matiere:Matiere):Observable<any> {
+        return this.http.post<Matiere>(this.uri_api, Matiere);
+    }
+
+    updateMatiere(Matiere:Matiere):Observable<any> {
+        return this.http.put<Matiere>(this.uri_api, Matiere);
+    }
+
+    deleteMatiere(Matiere:Matiere):Observable<any> {
+        return this.http.delete(this.uri_api + "/" + Matiere._id)
     }
     getMatiere(id : string) : Matiere{
         let allMatieres = bdInitialMatieres;

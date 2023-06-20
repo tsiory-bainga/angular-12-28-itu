@@ -15,6 +15,9 @@ export class MatiereListComponent {
     this.getMatieres();
   }
   getMatieres() {
-    this.listeMatieres = this.matiereService.getMatieres();
+    this.matiereService.getMatieres()
+    .subscribe(data => {
+      this.listeMatieres = data;
+    });
   }
 }

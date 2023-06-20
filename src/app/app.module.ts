@@ -38,6 +38,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { ChampPhotoComponent } from './components/champ-photo/champ-photo.component';
 import { FormContainerComponent } from './pages/form-container/form-container.component';
 import { RendreDevoirDialogComponent } from './components/rendre-devoir-dialog/rendre-devoir-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -77,7 +78,8 @@ registerLocaleData(localeFr, 'fr');
     MatCardModule,
     MatTabsModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},

@@ -16,7 +16,10 @@ export class AssignmentListComponent {
     this.getAssignments();
   }
   getAssignments() {
-    this.listeAssignments = this.assignmentService.getAssignments();
+    this.assignmentService.getAssignments()
+    .subscribe(data => {
+      this.listeAssignments = data.docs;
+    });
   }
   getRenduAssignments() {
     this.listeAssignments = this.assignmentService.getRenduAssignments();
